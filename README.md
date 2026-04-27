@@ -58,12 +58,81 @@ WorkoutTracker/
 
 The UML diagram shows relationships between:
 
-* User → Workouts
-* Workout → Exercises
-* WorkoutSession → SetEntries
-* ProgressTracker → WorkoutSessions
++-------------------+
+|       users       |
++-------------------+
+| id (PK) : string  |
+| username : string |
++-------------------+
 
-(Include your UML image file here if submitting)
+          |
+          | user_id
+          v
+
++----------------------+
+|      workouts        |
++----------------------+
+| id (PK) : string     |
+| user_id (FK) : string|
+| name : string        |
+| date : date          |
++----------------------+
+
+          |
+          | workout_id
+          v
+
++----------------------+
+|      exercises       |
++----------------------+
+| id (PK) : string     |
+| workout_id (FK)      |
+| name : string        |
+| muscleGroup : string |
+| defaultSets : int    |
+| defaultReps : int    |
++----------------------+
+
+users
+  |
+  | user_id
+  v
+
++---------------------------+
+|    workout_sessions       |
++---------------------------+
+| id (PK) : string          |
+| user_id (FK) : string     |
+| workout_id (FK) : string  |
+| timestamp : datetime      |
++---------------------------+
+
+          |
+          | workout_session_id
+          v
+
++---------------------------+
+|      set_entries          |
++---------------------------+
+| id (PK) : string          |
+| workout_session_id (FK)   |
+| exercise_id (FK)          |
+| weight : double           |
+| reps : int                |
+| setNumber : int           |
++---------------------------+
+
+users
+  |
+  | user_id
+  v
+
++---------------------------+
+|   progress_trackers       |
++---------------------------+
+| id (PK) : string          |
+| user_id (FK) : string     |
++---------------------------+
 
 
 
