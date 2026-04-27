@@ -58,6 +58,7 @@ WorkoutTracker/
 
 The UML diagram shows relationships between:
 
+```
 +-------------------+
 |       users       |
 +-------------------+
@@ -133,6 +134,7 @@ users
 | id (PK) : string          |
 | user_id (FK) : string     |
 +---------------------------+
+```
 
 
 
