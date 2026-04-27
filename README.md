@@ -60,79 +60,86 @@ The UML diagram shows relationships between:
 
 ```
 +-------------------+
-|       users       |
+|       User        |
 +-------------------+
-| id (PK) : string  |
-| username : string |
+| id : String       |
+| username : String |
 +-------------------+
 
-          |
-          | user_id
-          v
+        1
+        |
+        | has
+        |
+        v
 
 +----------------------+
-|      workouts        |
+|       Workout        |
 +----------------------+
-| id (PK) : string     |
-| user_id (FK) : string|
-| name : string        |
-| date : date          |
+| id : String          |
+| name : String        |
+| date : Date          |
 +----------------------+
 
-          |
-          | workout_id
-          v
+        1
+        |
+        | contains
+        |
+        v
 
 +----------------------+
-|      exercises       |
+|      Exercise        |
 +----------------------+
-| id (PK) : string     |
-| workout_id (FK)      |
-| name : string        |
-| muscleGroup : string |
+| id : String          |
+| name : String        |
+| muscleGroup : String |
 | defaultSets : int    |
 | defaultReps : int    |
 +----------------------+
 
-users
+User
   |
-  | user_id
+  | logs
+  | 1..*
   v
 
 +---------------------------+
-|    workout_sessions       |
+|    WorkoutSession         |
 +---------------------------+
-| id (PK) : string          |
-| user_id (FK) : string     |
-| workout_id (FK) : string  |
-| timestamp : datetime      |
+| id : String               |
+| timestamp : DateTime      |
 +---------------------------+
 
-          |
-          | workout_session_id
-          v
+        |
+        | contains
+        | 1..*
+        v
 
 +---------------------------+
-|      set_entries          |
+|       SetEntry            |
 +---------------------------+
-| id (PK) : string          |
-| workout_session_id (FK)   |
-| exercise_id (FK)          |
+| id : String               |
 | weight : double           |
 | reps : int                |
 | setNumber : int           |
 +---------------------------+
 
-users
+Exercise
+   ^
+   |
+   | performed in
+   |
+SetEntry
+
+User
   |
-  | user_id
+  | tracks
+  |
   v
 
 +---------------------------+
-|   progress_trackers       |
+|   ProgressTracker         |
 +---------------------------+
-| id (PK) : string          |
-| user_id (FK) : string     |
+| id : String               |
 +---------------------------+
 ```
 
